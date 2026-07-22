@@ -1,5 +1,65 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Audio Separation · Model Comparison</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="spectrogram-fix.css"></head><body>
-<header><div class="eyebrow">LISTENING ROOM · CURATED BUILD R10 · 2026</div><h1>Hear the difference.</h1><p>五种音频分离模型的逐样本横向对比。每个属性仅保留最终选定的两条案例；Speech 使用 OVRL。</p><div id="stats"></div></header>
-<nav><div id="tasks"></div><div id="cats"></div></nav><main id="app"></main>
-<template id="card"><section class="sample"><div class="sample-head"><span class="num"></span><div><div class="tags"></div><h2></h2></div></div><div class="compare"></div></section></template>
-<script src="app.js?v=20260723-10"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#050816">
+  <title>ThinkSep · Listen, Think and Separate</title>
+  <link rel="stylesheet" href="style.css?v=20260723-11">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="hero">
+    <nav class="topbar">
+      <a class="brand" href="#top"><span class="brand-mark"></span>THINKSEP</a>
+      <div class="nav-links">
+        <a href="#abstract">Abstract</a><a href="#semantic">Semantic</a><a href="#speech">Speech</a><a href="#music">Music</a><a href="#sound">Sound</a>
+      </div>
+    </nav>
+    <div class="hero-inner" id="top">
+      <div class="kicker"><span></span> UNIVERSAL SOUND SEPARATION WITH IMPLICIT REASONING</div>
+      <h1>Listen. Think.<br><em>Separate.</em></h1>
+      <p class="hero-copy">Separating the sound you mean—not merely the category you name.</p>
+      <div class="hero-meta"><span>28 curated cases</span><i></i><span>4 reasoning dimensions</span><i></i><span>5 model baselines</span></div>
+      <a class="listen-cta" href="#demo"><span class="play-icon">▶</span> Explore the listening demo</a>
+    </div>
+    <div class="orb" aria-hidden="true"><div class="orb-core"></div><div class="orbit orbit-1"></div><div class="orbit orbit-2"></div></div>
+  </header>
+
+  <main>
+    <section class="abstract-section" id="abstract">
+      <div class="section-label"><span>01</span> ABSTRACT</div>
+      <div class="abstract-grid">
+        <h2>Beyond noun matching.</h2>
+        <div class="abstract-copy">
+          <p>Text-query universal sound separation allows users to extract a target sound source using natural language. However, most existing methods understand text only through <strong>noun matching</strong>: entity nouns in a query—such as “cat meow” or “piano”—are aligned with fixed sound categories. This paradigm fails when instructions require reasoning, as in “extract the brightest-sounding source,” and provides no fine-grained control over sound attributes.</p>
+          <p>We introduce <strong>Universal Sound Separation with Implicit Reasoning Text Query</strong>, a new task setting in which the target must be inferred from descriptive, comparative, or attribute-based instructions rather than an explicit category name. We further propose <strong>Listen, Think and Separate (ThinkSep)</strong>, a generative framework that performs instruction understanding, target selection, and separation as one unified process.</p>
+          <p>ThinkSep tokenizes audio with a four-codebook X-Codec tokenizer and uses a Qwen3-0.6B language model to autoregressively generate target audio tokens in a decoder-only manner, conditioned on the mixture and text instruction. A single framework models semantics and the attributes of speech, music, and general sound, showing that semantic and attribute information are complementary. Across objective and subjective evaluations, ThinkSep achieves state-of-the-art performance on most metrics for both category and attribute-constrained queries.</p>
+        </div>
+      </div>
+      <div class="method-strip">
+        <div><b>01</b><span>LISTEN</span><small>Mixture audio</small></div><div class="arrow">→</div>
+        <div><b>02</b><span>THINK</span><small>Reason over instruction</small></div><div class="arrow">→</div>
+        <div><b>03</b><span>SEPARATE</span><small>Generate target audio</small></div>
+      </div>
+    </section>
+
+    <section class="demo-intro" id="demo">
+      <div class="section-label"><span>02</span> INTERACTIVE LISTENING DEMO</div>
+      <h2>One instruction.<br>Six ways to listen.</h2>
+      <p>Play the mixture, then compare the separated outputs. ThinkSep is highlighted throughout the demo.</p>
+      <div id="stats" class="stats"></div>
+    </section>
+    <div id="app"></div>
+  </main>
+
+  <footer><span class="brand"><span class="brand-mark"></span>THINKSEP</span><p>Listen, Think and Separate · 2026</p></footer>
+  <template id="sample-template">
+    <article class="sample-card">
+      <div class="query-block"><span class="case-id"></span><div><span class="query-label">TEXT INSTRUCTION</span><h4></h4></div></div>
+      <div class="audio-grid"></div>
+    </article>
+  </template>
+  <script src="app.js?v=20260723-11"></script>
+</body>
+</html>

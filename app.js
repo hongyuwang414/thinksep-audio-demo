@@ -1,6 +1,58 @@
-let all=[],task='semantic',cat='all';const labels={semantic:'Semantic',speech:'Speech',music:'Music',sound:'Sound'};
-fetch('data.json?v=20260723-10',{cache:'no-store'}).then(r=>r.json()).then(d=>{all=d;document.querySelector('#stats').textContent=`${d.length} CASES  ·  ${d.length*6} AUDIO CLIPS  ·  5 MODELS`;drawNav();render()});
-function btn(text,on,fn){let b=document.createElement('button');b.className='pill'+(on?' active':'');b.textContent=text;b.onclick=fn;return b}
-function drawNav(){let t=document.querySelector('#tasks');t.innerHTML='';Object.keys(labels).forEach(k=>t.append(btn(labels[k],task===k,()=>{task=k;cat='all';drawNav();render()})));let c=document.querySelector('#cats');c.innerHTML='';let cats=[...new Set(all.filter(x=>x.task===task).map(x=>x.category))];c.append(btn('全部',cat==='all',()=>{cat='all';drawNav();render()}));cats.forEach(k=>c.append(btn(k,cat===k,()=>{cat=k;drawNav();render()})))}
-function unit(name,audio,spec,metrics={}){let d=document.createElement('article');d.className='unit '+(name==='ThinkSep'?'thinksep':'');let ms=Object.entries(metrics).map(([k,v])=>`${k.replace('judge_overall','Judge').replace('stft_dist','STFT Dist')}: ${v}`).join(' · ');d.innerHTML=`<h3>${name}${name==='ThinkSep'?'<span class="best">STFT ↓ · QUALITY ↑</span>':''}</h3><img class="spec" loading="lazy" src="${spec}" alt="${name} spectrogram"><audio controls preload="none" src="${audio}"></audio><div class="metrics">${ms||'Original mixture'}</div>`;return d}
-function render(){let app=document.querySelector('#app');app.innerHTML='';let rows=all.filter(x=>x.task===task&&(cat==='all'||x.category===cat));rows.forEach((x,i)=>{let n=document.querySelector('#card').content.cloneNode(true);n.querySelector('.num').textContent=String(i+1).padStart(2,'0');n.querySelector('.tags').textContent=`${labels[x.task]} / ${x.category} / SOURCE #${String(x.index).padStart(5,'0')}`;n.querySelector('h2').textContent=x.question;let cmp=n.querySelector('.compare');cmp.append(unit('Mixture',x.mixture,x.mixtureSpec));x.models.forEach(m=>cmp.append(unit(m.name,m.audio,m.spec,m.metrics)));app.append(n)});if(!rows.length)app.innerHTML='<div class="empty">No samples.</div>'}
+const TASKS = ['semantic', 'speech', 'music', 'sound'];
+const LABELS = {semantic:'Semantic', speech:'Speech Attributes', music:'Music Attributes', sound:'General Sound Attributes'};
+const DESCRIPTIONS = {
+  semantic:'Identify and isolate a source through semantic understanding.',
+  speech:'Follow comparative instructions about voice identity and delivery.',
+  music:'Reason over perceptual and acoustic qualities of musical sources.',
+  sound:'Separate everyday sounds through their temporal and acoustic attributes.'
+};
+const CATEGORY_LABELS = {
+  Semantic:'Category Reasoning', Gender:'Gender', Age:'Age', Speed:'Speed', Pitch:'Pitch', Energy:'Energy',
+  bandwidth_level:'Bandwidth', pitch_level:'Pitch', loudness_level:'Loudness', reverb:'Reverberation',
+  continuity:'Continuity', pitch_hz:'Pitch', bandwidth_hz:'Bandwidth', loudness_db:'Loudness'
+};
+
+fetch('data.json?v=20260723-11', {cache:'no-store'})
+  .then(r => r.json())
+  .then(data => {
+    document.querySelector('#stats').innerHTML = `<span><b>${data.length}</b> cases</span><span><b>${data.length * 6}</b> audio clips</span><span><b>4</b> task families</span>`;
+    render(data);
+  });
+
+function audioUnit(name, audio, spectrum, kind='model') {
+  const el = document.createElement('div');
+  const isThinkSep = name === 'ThinkSep';
+  el.className = `audio-unit ${kind} ${isThinkSep ? 'thinksep' : ''}`;
+  el.innerHTML = `
+    <div class="unit-head"><span>${name}</span>${isThinkSep ? '<small>OUR METHOD</small>' : ''}</div>
+    <div class="spectrum-wrap"><img loading="lazy" src="${spectrum}" alt="${name} spectrogram"><span class="scanline"></span></div>
+    <audio controls preload="none" src="${audio}"></audio>`;
+  return el;
+}
+
+function render(data) {
+  const app = document.querySelector('#app');
+  TASKS.forEach((task, taskIndex) => {
+    const taskRows = data.filter(x => x.task === task);
+    const section = document.createElement('section');
+    section.className = 'task-section'; section.id = task;
+    section.innerHTML = `<div class="task-heading"><div class="task-index">0${taskIndex + 1}</div><div><span>TASK FAMILY</span><h2>${LABELS[task]}</h2><p>${DESCRIPTIONS[task]}</p></div></div>`;
+    const categories = [...new Set(taskRows.map(x => x.category))];
+    categories.forEach((category, categoryIndex) => {
+      const group = document.createElement('section');
+      group.className = 'category-group';
+      group.innerHTML = `<div class="category-heading"><span>${String(categoryIndex + 1).padStart(2,'0')}</span><h3>${CATEGORY_LABELS[category] || category}</h3><i></i><small>2 CASES</small></div>`;
+      taskRows.filter(x => x.category === category).forEach((sample, sampleIndex) => {
+        const fragment = document.querySelector('#sample-template').content.cloneNode(true);
+        fragment.querySelector('.case-id').textContent = `CASE ${String(sampleIndex + 1).padStart(2,'0')}`;
+        fragment.querySelector('h4').textContent = sample.question;
+        const grid = fragment.querySelector('.audio-grid');
+        grid.append(audioUnit('Mixture', sample.mixture, sample.mixtureSpec, 'mixture'));
+        sample.models.forEach(m => grid.append(audioUnit(m.name, m.audio, m.spec)));
+        group.append(fragment);
+      });
+      section.append(group);
+    });
+    app.append(section);
+  });
+}
