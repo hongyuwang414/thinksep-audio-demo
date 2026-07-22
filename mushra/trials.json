@@ -1,0 +1,240 @@
+[
+  {
+    "id": "t01",
+    "task": "semantic",
+    "attribute": "Semantic",
+    "sourceIndex": 1,
+    "instruction": "Please extract the sound of Brass instrument from this mixture.",
+    "mixture": "audio/t01-mixture.wav",
+    "reference": "audio/t01-reference.wav",
+    "anchor": "audio/t01-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t01-samaudio.wav",
+      "omnisep": "audio/t01-omnisep.wav",
+      "clapsep": "audio/t01-clapsep.wav",
+      "audiosep": "audio/t01-audiosep.wav",
+      "thinksep": "audio/t01-thinksep.wav"
+    }
+  },
+  {
+    "id": "t02",
+    "task": "speech",
+    "attribute": "Gender",
+    "sourceIndex": 26,
+    "instruction": "Compare the gender of the two speakers in the mixture. Extract the speech of the female one.",
+    "mixture": "audio/t02-mixture.wav",
+    "reference": "audio/t02-reference.wav",
+    "anchor": "audio/t02-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t02-samaudio.wav",
+      "omnisep": "audio/t02-omnisep.wav",
+      "clapsep": "audio/t02-clapsep.wav",
+      "audiosep": "audio/t02-audiosep.wav",
+      "thinksep": "audio/t02-thinksep.wav"
+    }
+  },
+  {
+    "id": "t03",
+    "task": "speech",
+    "attribute": "Age",
+    "sourceIndex": 141,
+    "instruction": "Compare the age of the two speakers in the mixture. Extract the speech of the younger one.",
+    "mixture": "audio/t03-mixture.wav",
+    "reference": "audio/t03-reference.wav",
+    "anchor": "audio/t03-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t03-samaudio.wav",
+      "omnisep": "audio/t03-omnisep.wav",
+      "clapsep": "audio/t03-clapsep.wav",
+      "audiosep": "audio/t03-audiosep.wav",
+      "thinksep": "audio/t03-thinksep.wav"
+    }
+  },
+  {
+    "id": "t04",
+    "task": "speech",
+    "attribute": "Speed",
+    "sourceIndex": 202,
+    "instruction": "Compare the speaking speed of the two speakers in the mixture. Extract the speech of the slower one.",
+    "mixture": "audio/t04-mixture.wav",
+    "reference": "audio/t04-reference.wav",
+    "anchor": "audio/t04-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t04-samaudio.wav",
+      "omnisep": "audio/t04-omnisep.wav",
+      "clapsep": "audio/t04-clapsep.wav",
+      "audiosep": "audio/t04-audiosep.wav",
+      "thinksep": "audio/t04-thinksep.wav"
+    }
+  },
+  {
+    "id": "t05",
+    "task": "speech",
+    "attribute": "Pitch",
+    "sourceIndex": 308,
+    "instruction": "Compare the pitch level of the two speakers in the mixture. Extract the speech of the lower one.",
+    "mixture": "audio/t05-mixture.wav",
+    "reference": "audio/t05-reference.wav",
+    "anchor": "audio/t05-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t05-samaudio.wav",
+      "omnisep": "audio/t05-omnisep.wav",
+      "clapsep": "audio/t05-clapsep.wav",
+      "audiosep": "audio/t05-audiosep.wav",
+      "thinksep": "audio/t05-thinksep.wav"
+    }
+  },
+  {
+    "id": "t06",
+    "task": "speech",
+    "attribute": "Energy",
+    "sourceIndex": 442,
+    "instruction": "Compare the loudness of the two speakers in the mixture. Extract the speech of the lower one.",
+    "mixture": "audio/t06-mixture.wav",
+    "reference": "audio/t06-reference.wav",
+    "anchor": "audio/t06-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t06-samaudio.wav",
+      "omnisep": "audio/t06-omnisep.wav",
+      "clapsep": "audio/t06-clapsep.wav",
+      "audiosep": "audio/t06-audiosep.wav",
+      "thinksep": "audio/t06-thinksep.wav"
+    }
+  },
+  {
+    "id": "t07",
+    "task": "music",
+    "attribute": "bandwidth_level",
+    "sourceIndex": 31,
+    "instruction": "Compare the bandwidth of the two music clips in the mixture. Extract the wider one.",
+    "mixture": "audio/t07-mixture.wav",
+    "reference": "audio/t07-reference.wav",
+    "anchor": "audio/t07-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t07-samaudio.wav",
+      "omnisep": "audio/t07-omnisep.wav",
+      "clapsep": "audio/t07-clapsep.wav",
+      "audiosep": "audio/t07-audiosep.wav",
+      "thinksep": "audio/t07-thinksep.wav"
+    }
+  },
+  {
+    "id": "t08",
+    "task": "music",
+    "attribute": "pitch_level",
+    "sourceIndex": 125,
+    "instruction": "Compare the pitch level of the two music clips in the mixture. Extract the higher one.",
+    "mixture": "audio/t08-mixture.wav",
+    "reference": "audio/t08-reference.wav",
+    "anchor": "audio/t08-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t08-samaudio.wav",
+      "omnisep": "audio/t08-omnisep.wav",
+      "clapsep": "audio/t08-clapsep.wav",
+      "audiosep": "audio/t08-audiosep.wav",
+      "thinksep": "audio/t08-thinksep.wav"
+    }
+  },
+  {
+    "id": "t09",
+    "task": "music",
+    "attribute": "loudness_level",
+    "sourceIndex": 235,
+    "instruction": "Compare the loudness of the two music clips in the mixture. Extract the louder one.",
+    "mixture": "audio/t09-mixture.wav",
+    "reference": "audio/t09-reference.wav",
+    "anchor": "audio/t09-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t09-samaudio.wav",
+      "omnisep": "audio/t09-omnisep.wav",
+      "clapsep": "audio/t09-clapsep.wav",
+      "audiosep": "audio/t09-audiosep.wav",
+      "thinksep": "audio/t09-thinksep.wav"
+    }
+  },
+  {
+    "id": "t10",
+    "task": "sound",
+    "attribute": "reverb",
+    "sourceIndex": 1,
+    "instruction": "Compare the reverb of the two sounds in the mixture. Extract the reverberant one.",
+    "mixture": "audio/t10-mixture.wav",
+    "reference": "audio/t10-reference.wav",
+    "anchor": "audio/t10-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t10-samaudio.wav",
+      "omnisep": "audio/t10-omnisep.wav",
+      "clapsep": "audio/t10-clapsep.wav",
+      "audiosep": "audio/t10-audiosep.wav",
+      "thinksep": "audio/t10-thinksep.wav"
+    }
+  },
+  {
+    "id": "t11",
+    "task": "sound",
+    "attribute": "continuity",
+    "sourceIndex": 109,
+    "instruction": "Compare the continuity of the two sounds in the mixture. Extract the continuous one.",
+    "mixture": "audio/t11-mixture.wav",
+    "reference": "audio/t11-reference.wav",
+    "anchor": "audio/t11-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t11-samaudio.wav",
+      "omnisep": "audio/t11-omnisep.wav",
+      "clapsep": "audio/t11-clapsep.wav",
+      "audiosep": "audio/t11-audiosep.wav",
+      "thinksep": "audio/t11-thinksep.wav"
+    }
+  },
+  {
+    "id": "t12",
+    "task": "sound",
+    "attribute": "pitch_hz",
+    "sourceIndex": 226,
+    "instruction": "Compare the pitch of the two sounds in the mixture. Extract the lower one.",
+    "mixture": "audio/t12-mixture.wav",
+    "reference": "audio/t12-reference.wav",
+    "anchor": "audio/t12-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t12-samaudio.wav",
+      "omnisep": "audio/t12-omnisep.wav",
+      "clapsep": "audio/t12-clapsep.wav",
+      "audiosep": "audio/t12-audiosep.wav",
+      "thinksep": "audio/t12-thinksep.wav"
+    }
+  },
+  {
+    "id": "t13",
+    "task": "sound",
+    "attribute": "bandwidth_hz",
+    "sourceIndex": 357,
+    "instruction": "Compare the bandwidth of the two sounds in the mixture. Extract the wider one.",
+    "mixture": "audio/t13-mixture.wav",
+    "reference": "audio/t13-reference.wav",
+    "anchor": "audio/t13-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t13-samaudio.wav",
+      "omnisep": "audio/t13-omnisep.wav",
+      "clapsep": "audio/t13-clapsep.wav",
+      "audiosep": "audio/t13-audiosep.wav",
+      "thinksep": "audio/t13-thinksep.wav"
+    }
+  },
+  {
+    "id": "t14",
+    "task": "sound",
+    "attribute": "loudness_db",
+    "sourceIndex": 433,
+    "instruction": "Compare the loudness of the two sounds in the mixture. Extract the louder one.",
+    "mixture": "audio/t14-mixture.wav",
+    "reference": "audio/t14-reference.wav",
+    "anchor": "audio/t14-anchor.wav",
+    "systems": {
+      "samaudio": "audio/t14-samaudio.wav",
+      "omnisep": "audio/t14-omnisep.wav",
+      "clapsep": "audio/t14-clapsep.wav",
+      "audiosep": "audio/t14-audiosep.wav",
+      "thinksep": "audio/t14-thinksep.wav"
+    }
+  }
+]
